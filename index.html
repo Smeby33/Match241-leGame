@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Match241</title>
+
+        <!-- CSS FILES -->                
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,400;0,600;0,700;1,200;1,700&display=swap" rel="stylesheet">
+            
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="css/vegas.min.css" rel="stylesheet">
+
+        <link href="css/actionverite.css" rel="stylesheet">
+        <style>
+            .hidden {
+                display: none;
+            }
+            .button1{
+                border: none;
+                color: none;
+                background-color: none;
+
+            }
+            .hey{
+                color: white;
+                font-weight: bolder;
+            }
+            #enregiSection{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+            }
+            .engi{
+                display: flex;
+                justify-content: space-between ;
+            }
+            .engi1{
+                display: flex;
+                justify-content: space-between ;
+                flex-direction: column;
+            }
+            .engi1A{
+                display: flex;
+                justify-content: space-between ;
+            }
+            input{
+                border-radius: 5px 
+            }
+        </style>
+        
+
+    </head>
+    
+    <body>
+                
+            <main>
+                <nav class="navbar navbar-expand-lg">                
+                    <div class="container">
+                        <a class="navbar-brand d-flex align-items-center" href="index.html">
+                            <img src="images/coffee-beans.png" class="navbar-brand-image img-fluid" alt="Barista Cafe Template">
+                    MATCH241
+                        </a>
+        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            
+                            <div class="ms-lg-3">
+                                <div id="resultaSection" class="hidden">
+                                    <p id="resultaTexte" class="hey" ></p>
+                                        <button class="btn custom-btn custom-border-btn" onclick="continuer()">Continuer</button>
+                                        <button class="btn custom-btn custom-border-btn" onclick="retour()">Retour</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+
+                    <div class="container">
+                        <div class="row align-items-center">
+
+                            <div class="col-lg-6 col-12 mx-auto">
+                                
+                                <div id="enregiSection">
+                                    <div class="engi">
+                                    <div>
+                                    <input type="text" id="inputH" placeholder="homme" style="border: radius 10px;" >
+                                    <br><br>
+                                    <button class="btn custom-btn custom-border-btn"  onclick="ajouterhomme()">Ajouter homme</button>
+                                    <button class="btn custom-btn custom-border-btn" onclick="retourHomme()">Retour homme</button>
+                                    </div>
+                                    <div>
+                                    <input type="text" id="inputF" placeholder="femme" style="border-radius:20px pink;">
+                                    <br><br>
+                                    <button class="btn custom-btn custom-border-btn" onclick="ajouterfemme()">Ajouter femme</button>
+                                    <button class="btn custom-btn custom-border-btn" onclick="retourFemme()">Retour femme</button>
+                                    </div>
+                                </div>
+                                <div class="engi1">
+                                    <div>
+                                    <button class="btn custom-btn custom-border-btn" onclick="valider()">Valider</button>
+                                    </div>
+                                    <div  class="engi1A">
+                                    <h6 style="color: pink;" >Liste des hommes</h6>
+                                    <ul id="listehomme" style="color: white;" class="btn custom-btn custom-border-btn"></ul>
+                                    </div>
+                                    <h6 style="color: pink;" >Liste des femmes</h6>
+                                <ul id="listefemme" style="color: white;" class="btn custom-btn custom-border-btn"></ul> 
+                                </div>
+                                </div>
+                                </div>
+
+                        </div>
+                    </div>
+ 
+                    <div class="hero-slides"></div>
+                </section>
+
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-lg-4 col-12 me-auto">
+                              
+                                <script>
+                                    var nomhomme = [];
+                                    var nomfemme = [];
+                                    var nomphrase = ['sont faits pour être ensemble', 'ne sont pas faits pour être ensemble','doivent se faire un câlin de 30 secondes',
+                                                        'doivent se regarder dans les yeux et faire une déclaration d\'amour exagérée',
+                                                        'doivent danser ensemble pendant une minute',
+                                                        'doivent se raconter un secret embarrassant',
+                                                        'doivent se tenir par la main jusqu\'au prochain tour',
+                                                        'doivent échanger leurs places et imiter l\'autre pendant 2 minutes',
+                                                        'doivent chanter une chanson romantique ensemble',
+                                                        'doivent se masser les épaules pendant 1 minute',
+                                                        'doivent se complimenter de manière exagérée pendant 30 secondes',
+                                                        'doivent se murmurer des choses coquines à l\'oreille pendant 30 secondes',
+                                                        'doivent se faire un baiser sur la joue',
+                                                        'doivent s\'asseoir dos à dos et se pencher l\'un contre l\'autre pendant 1 minute',
+                                                        'doivent se faire un bisou papillon (battement de cils) sur la joue',
+                                                        'doivent se tenir les mains et dire quelque chose qu\'ils aiment chez l\'autre',
+                                                        'doivent partager une blague coquine l\'un avec l\'autre',
+                                                        'doivent faire une danse sensuelle ensemble',
+                                                        'doivent se murmurer des compliments doux pendant 1 minute',
+                                                        'doivent faire semblant de se marier et échanger des vœux amusants',
+                                                        'doivent jouer au jeu du regard sans cligner des yeux, le perdant doit donner un bisou',
+                                                        'doivent dessiner quelque chose de mignon sur la main de l\'autre','doivent se faire un baiser passionné pendant 10 secondes',
+                                                        'doivent se murmurer des mots doux à l\'oreille pendant 30 secondes',
+                                                        'doivent se tenir par la taille et danser sensuellement pendant 1 minute',
+                                                        'doivent se faire un bisou sur le cou',
+                                                        'doivent se caresser le visage doucement pendant 30 secondes',
+                                                        'doivent se raconter leurs fantasmes secrets',
+                                                        'doivent se faire un massage des pieds pendant 1 minute',
+                                                        'doivent jouer à pierre-papier-ciseaux, le perdant doit faire un strip-tease rapide',
+                                                        'doivent échanger un vêtement pendant le reste du jeu',
+                                                        'doivent s\'asseoir l\'un sur les genoux de l\'autre pendant 2 minutes',
+                                                        'doivent se regarder dans les yeux et dire quelque chose de sexy',
+                                                        'doivent se faire un baiser esquimau (nez contre nez)',
+                                                        'doivent se frotter le nez comme des lapins',
+                                                        'doivent se donner des surnoms coquins pour le reste du jeu',
+                                                        'doivent se faire un baiser papillon (cils contre peau) sur les lèvres',
+                                                        'doivent se tenir par la taille et se chuchoter des compliments osés',
+                                                        'doivent mimer une scène romantique d\'un film pendant 1 minute',
+                                                        'doivent se masser les épaules sensuellement pendant 2 minutes',
+                                                        'doivent se faire un bisou dans le creux de l\'épaule',
+                                                        'doivent se lécher l\'oreille délicatement',
+                                                        'doivent se caresser les cheveux doucement pendant 1 minute',
+                                                        'doivent se murmurer des secrets coquins',
+                                                        'doivent faire semblant de se marier et échanger des vœux sexy',
+                                                        'doivent se regarder dans les yeux sans parler pendant 1 minute, puis dire quelque chose de coquin',
+                                                        'doivent jouer au jeu du regard, le perdant doit donner un bisou langoureux'
+                                                    ];
+
+                            
+                                    function ajouterhomme() {
+                                        var prendreNh = document.getElementById('inputH');
+                                        var prendreValeurNh = prendreNh.value;
+                                        if (prendreValeurNh) {
+                                            nomhomme.push(prendreValeurNh);
+                                            afficherListe('listehomme', nomhomme);
+                                            prendreNh.value = ''; 
+                                        }
+                                        console.log(nomhomme);
+                                    }
+                            
+                                    function ajouterfemme() {
+                                        var prendreNf = document.getElementById('inputF');
+                                        var prendreValeurNf = prendreNf.value;
+                                        if (prendreValeurNf) {
+                                            nomfemme.push(prendreValeurNf);
+                                            afficherListe('listefemme', nomfemme);
+                                            prendreNf.value = ''; 
+                                        }
+                                        console.log(nomfemme);
+                                    }
+                            
+                                    function retourHomme() {
+                                        if (nomhomme.length > 0) {
+                                            nomhomme.pop();
+                                            afficherListe('listehomme', nomhomme);
+                                        }
+                                        console.log(nomhomme);
+                                    }
+                            
+                                    function retourFemme() {
+                                        if (nomfemme.length > 0) {
+                                            nomfemme.pop();
+                                            afficherListe('listefemme', nomfemme);
+                                        }
+                                        console.log(nomfemme);
+                                    }
+                            
+                                    function afficherListe(elementId, liste) {
+                                        var listElement = document.getElementById(elementId);
+                                        listElement.innerHTML = '';
+                                        liste.forEach(function(item) {
+                                            var li = document.createElement('li');
+                                            li.textContent = item;
+                                            listElement.appendChild(li);
+                                        });
+                                    }
+                            
+                                    function valider() {
+                                        if (nomhomme.length > 0 && nomfemme.length > 0) {
+                                            afficherResultat();
+                                            document.getElementById('enregiSection').classList.add('hidden');
+                                            document.getElementById('resultaSection').classList.remove('hidden');
+                                        } else {
+                                            console.log("Les listes de noms ne peuvent pas être vides");
+                                            alert("Les listes de noms ne peuvent pas être vides");
+                                        }
+                                    }
+                            
+                                    function afficherResultat() {
+                                        var valeurAleaH = Math.floor(Math.random() * nomhomme.length);
+                                        var valeurAleaF = Math.floor(Math.random() * nomfemme.length);
+                                        var valeurAleaPh = Math.floor(Math.random() * nomphrase.length);
+                            
+                                        var nomAleaH = nomhomme[valeurAleaH];
+                                        var nomAleaF = nomfemme[valeurAleaF];
+                                        var nomAleaPh = nomphrase[valeurAleaPh];
+                            
+                                        var resultaTexte = `${nomAleaH} et ${nomAleaF} ${nomAleaPh}`;
+                                        document.getElementById('resultaTexte').textContent = resultaTexte;
+                                    }
+                            
+                                    function continuer() {
+                                        afficherResultat();
+                                    }
+                            
+                                    function retour() {
+                                        document.getElementById('resultaSection').classList.add('hidden');
+                                        document.getElementById('enregiSection').classList.remove('hidden');
+                                    }
+                                </script>
+                            
+                            </div>
+
+                            <div class="col-lg-8 col-12 mt-4">
+                                <p class="copyright-text mb-0">Copyright © Match241   -2024
+                                    - Design: <a rel="sponsored" href=" " target="_blank">smeby33</a></p>
+                            </div>
+                    </div>
+                </footer>
+            </main>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.sticky.js"></script>
+        <script src="js/click-scroll.js"></script>
+        <script src="js/vegas.min.js"></script>
+        <script src="js/custom.js"></script>
+
+    </body>
+</html>
